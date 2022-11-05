@@ -51,7 +51,7 @@ def db():
 	    cursor.execute("select * from [dbo].[TestTab]")
 	    temp = []
 	    for row in cursor:
-	        temp.append(temp)
+	        temp.append(row)
 
 	    return f"<p>DB DATA : {temp} </p>"
 	except Exception as e:
