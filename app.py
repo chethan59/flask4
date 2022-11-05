@@ -47,7 +47,7 @@ def db():
 	    db = "MyDBroom"
 
 	    conn = pymssql.connect(ser, us, pw, db , port='1433')
-	    cursor = conn.cursor(as_dict=True)
+	    cursor = conn.cursor(as_dict=False)
 	    cursor.execute("select * from [dbo].[TestTab]")
 	    temp = []
 	    for row in cursor:
