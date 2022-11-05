@@ -56,7 +56,11 @@ def db():
 	    return f"<p>DB DATA : {temp} </p>"
 	except Exception as e:
 		return f"error : {e}"
-	
+
+
+@app.route('/err')
+def err():
+    return a
 
 
 if __name__ == '__main__':
