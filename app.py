@@ -33,6 +33,11 @@ select * from [dbo].[TestTab]
 @app.route('/')
 def hello_world():
     ok.me()
+    return "<p>Hello, World </p>"
+
+@app.route('/db')
+def db():
+    ok.me()
     
     connString = "Driver={ODBC Driver 13 for SQL Server};Server=tcp:mysqlserver00799.database.windows.net,1433;Database=MyDBroom;Uid=room;Pwd=qwer$321;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
     conn = pyodbc.connect(connString,)
@@ -40,9 +45,9 @@ def hello_world():
     query="select * from [dbo].[TestTab]"
     cursor.execute(query) 
     row = cursor.fetchall()
-    print(row)
+    #print(row)
     
-    return "<p>Hello, World! DB DATA : row </p>"
+    return f"<p>DB DATA : {row} </p>"
 
 
 if __name__ == '__main__':
