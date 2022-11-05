@@ -1,7 +1,7 @@
 from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 from main import ok
-import pyodbc
+#import pyodbc
 import pymssql
 app = Flask(__name__)
 
