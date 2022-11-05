@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, send_from_
 from main import ok
 #import pyodbc
 import pymssql
-app = Flask(__name__)
+appN = Flask(__name__)
 
 
 
@@ -31,12 +31,12 @@ select * from [dbo].[TestTab]
 """
 
 
-@app.route('/')
+@appN.route('/')
 def hello_world():
     ok.me()
     return "<p>Hello, World </p>"
 
-@app.route('/db')
+@appN.route('/db')
 def db():
 	try: 
 	    #ok.me()
@@ -63,4 +63,5 @@ if __name__ == '__main__':
     #app.run(host='0.0.0.0', port=5000, debug=True)
     #app.debug = True
     #app.run(debug=True)
-    app.run()
+    #appN.run()
+    pass
