@@ -37,17 +37,21 @@ def hello_world():
 
 @app.route('/db')
 def db():
-    ok.me()
-    
-    connString = "Driver={ODBC Driver 13 for SQL Server};Server=tcp:mysqlserver00799.database.windows.net,1433;Database=MyDBroom;Uid=room;Pwd=qwer$321;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
-    conn = pyodbc.connect(connString,)
-    cursor = conn.cursor()
-    query="select * from [dbo].[TestTab]"
-    cursor.execute(query) 
-    row = cursor.fetchall()
-    #print(row)
-    
-    return f"<p>DB DATA : {row} </p>"
+	try: 
+	    #ok.me()
+
+	    connString = "Driver={ODBC Driver 13 for SQL Server};Server=tcp:mysqlserver00799.database.windows.net,1433;Database=MyDBroom;Uid=room;Pwd=qwer$321;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
+	    conn = pyodbc.connect(connString,)
+	    cursor = conn.cursor()
+	    query="select * from [dbo].[TestTab]"
+	    cursor.execute(query) 
+	    row = cursor.fetchall()
+	    #print(row)
+
+	    return f"<p>DB DATA : {row} </p>"
+	except Exception as e:
+		return f"error : {e}"
+	
 
 
 if __name__ == '__main__':
