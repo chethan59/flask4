@@ -2,6 +2,7 @@ from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 from main import ok
 import pyodbc
+import pymssql
 app = Flask(__name__)
 
 
@@ -40,15 +41,19 @@ def db():
 	try: 
 	    #ok.me()
 
-	    connString = "Driver={ODBC Driver 13 for SQL Server};Server=tcp:mysqlserver00799.database.windows.net,1433;Database=MyDBroom;Uid=room;Pwd=qwer$321;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
-	    conn = pyodbc.connect(connString,)
-	    cursor = conn.cursor()
-	    query="select * from [dbo].[TestTab]"
-	    cursor.execute(query) 
-	    row = cursor.fetchall()
-	    #print(row)
+	    ser = "mysqlserver00799.database.windows.net"
+	    us = "room"
+	    pw = "qwer$321"
+	    db = "MyDBroom"
 
-	    return f"<p>DB DATA : {row} </p>"
+	    conn = pymssql.connect(ser, us, pw, db , port='1433')
+	    cursor = conn.cursor(as_dict=True)
+	    cursor.execute("select * from [dbo].[TestTab]")
+	    temp = []
+	    for row in cursor:
+	        temp.append(temp)
+
+	    return f"<p>DB DATA : {temp} </p>"
 	except Exception as e:
 		return f"error : {e}"
 	
